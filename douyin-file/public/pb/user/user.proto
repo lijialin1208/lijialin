@@ -1,0 +1,125 @@
+syntax="proto3";
+
+option go_package="./pb;pb";
+package user;
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+message LoginResponse {
+  int64 ID = 1;
+  string token = 2;
+}
+message RegisterRequest {
+  string username = 1;
+  string password = 2;
+}
+message RegisterResponse {
+  int64 ID = 1;
+  string token = 2;
+}
+message UserInfoRequest {
+  int64 user_id = 1;
+  string token = 2;
+}
+message UserInfoResponse {
+  string nick = 1;
+  int64 followCount = 2;
+  int64 followerCount = 3;
+  int64 ID = 4;
+  bool isFollow = 5;
+}
+
+message RelationRequest {
+  string action_type = 1;
+  string to_id = 2;
+  string mid = 3;
+}
+message RelationResponse {
+
+}
+message FollowListRequest{
+  string user_id = 1;
+  string mid = 2;
+}
+message FollowListResponse {
+  repeated Author user_list = 1;
+}
+message Author {
+  int64 id = 1;
+  string name = 2;
+  int64 follow_count = 3;
+  int64 follower_count = 4;
+  bool is_follow = 5;
+}
+message FriendListRequest {
+  string user_id = 1;
+  string my_id = 2;
+}
+message FriendListResponse {
+  repeated Author user_list = 1;
+}
+message FollowerRequest {
+  string user_id = 1;
+  string mid = 2;
+}
+
+message FollowerResponse {
+  repeated Author followers = 1;
+}
+message Message {
+  string ID = 1;
+  int64 to_user_id = 2;
+  int64 from_user_id = 3;
+  string content = 4;
+  string  create_time = 5;
+}
+
+message MessageChatRequest {
+  string uid = 1;
+  string mid = 2;
+}
+message MessageChatResponse {
+    repeated Message message_list = 1;
+}
+message MessageActionRequest {
+  string uid = 1;
+  string mid = 2;
+  string content = 3;
+}
+message MessageActionResponse {
+
+}
+service Login {
+  rpc Login (LoginRequest) returns (LoginResponse);
+}
+service Register {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+}
+service UserInfo {
+  rpc UserInfo (UserInfoRequest) returns (UserInfoResponse);
+}
+
+service Relation {
+  rpc Relation (RelationRequest) returns (RelationResponse);
+}
+
+service FollowList {
+  rpc FollowList (FollowListRequest) returns (FollowListResponse);
+}
+
+service FriendList {
+  rpc FriendList (FriendListRequest) returns (FriendListResponse);
+}
+
+service Follower {
+  rpc Follower (FollowerRequest) returns (FollowerResponse);
+}
+
+service MessageChat{
+  rpc MessageChat (MessageChatRequest) returns (MessageChatResponse);
+}
+service MessageAction{
+  rpc MessageAction (MessageActionRequest) returns (MessageActionResponse);
+}

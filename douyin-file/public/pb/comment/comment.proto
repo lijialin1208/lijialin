@@ -1,0 +1,42 @@
+syntax="proto3";
+
+option go_package="./pb;pb";
+package comment;
+
+message CommentRequest {
+  string token = 1;
+  string video_id = 2;
+  string action_type = 3;
+  string comment_text = 4;
+  string comment_id = 5;
+
+}
+message CommentResponse {
+  int64 id =1;
+  Author user = 2;
+  string content = 3;
+  string create_date = 4;
+}
+message Author {
+  int64 id = 1;
+  string name = 2;
+  int64 follow_count = 3;
+  int64 follower_count = 4;
+  bool is_follow = 5;
+}
+
+message CommentListRequest {
+  string mid = 1;
+  string vid = 2;
+}
+message CommentListResponse {
+  repeated CommentResponse commentList = 1;
+}
+service Comment {
+  rpc Comment(CommentRequest) returns (CommentResponse);
+}
+
+
+service CommentList {
+  rpc CommentList(CommentListRequest) returns (CommentListResponse);
+}
