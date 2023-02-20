@@ -79,9 +79,11 @@ message Message {
 message MessageChatRequest {
   string uid = 1;
   string mid = 2;
+  string pre_msg_time = 3;
 }
 message MessageChatResponse {
     repeated Message message_list = 1;
+    string pre_msg_time = 2;
 }
 message MessageActionRequest {
   string uid = 1;

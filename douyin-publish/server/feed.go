@@ -99,7 +99,7 @@ func (f *FeedServer) Feed(ctx context.Context, in *pb.FeedRequest) (*pb.FeedResp
 					FollowerCount: u.FollowerCount,
 					IsFollow:      false,
 				},
-				PlayUrl:       publish.PlayUrl,
+				PlayUrl:       fmt.Sprint("http://", viper.GetString("server.ip"), ":", viper.GetString("server.port"), "/", publish.PlayUrl),
 				CoverUrl:      publish.CoverUrl,
 				FavoriteCount: int64(publish.NumberLikes),
 				CommentCount:  int64(publish.NumberComments),

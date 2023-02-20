@@ -15,6 +15,7 @@ import (
 func MessageChat(ctx context.Context, requestContext *app.RequestContext) {
 	token := requestContext.Query("token")
 	to_user_id := requestContext.Query("to_user_id")
+	pre_msg_time := requestContext.Query("pre_msg_time")
 	userClaim, err := tool.ParseToken(token)
 	if err != nil {
 		log.Println(err)
@@ -35,8 +36,9 @@ func MessageChat(ctx context.Context, requestContext *app.RequestContext) {
 	}
 	client := user.NewMessageChatClient(dial)
 	response, err := client.MessageChat(context.TODO(), &user.MessageChatRequest{
-		Uid: to_user_id,
-		Mid: strconv.Itoa(userClaim.ID),
+		Uid:        to_user_id,
+		Mid:        strconv.Itoa(userClaim.ID),
+		PreMsgTime: pre_msg_time,
 	})
 	if err != nil {
 		log.Println(err)
@@ -46,8 +48,10 @@ func MessageChat(ctx context.Context, requestContext *app.RequestContext) {
 		})
 		return
 	}
+	log.Println(response)
 	requestContext.JSON(consts.StatusOK, utils.H{
 		"status_code":  0,
 		"message_list": response.MessageList,
+		"pre_msg_time": response.PreMsgTime,
 	})
 }

@@ -43,6 +43,14 @@ func Comment(ctx context.Context, requestContext *app.RequestContext) {
 		})
 		return
 	}
+	if response.Id == 0 {
+		requestContext.JSON(consts.StatusOK, utils.H{
+			"status_code": 1,
+			"status_msg":  "fail",
+			"comment":     nil,
+		})
+		return
+	}
 	requestContext.JSON(consts.StatusOK, utils.H{
 		"status_code": 0,
 		"status_msg":  "ok",

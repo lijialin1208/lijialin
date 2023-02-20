@@ -48,7 +48,8 @@ func (c *CommentServer) Comment(ctx context.Context, in *pb.CommentRequest) (*pb
 			CreateDate: createdAt,
 		}, nil
 	} else if actionType == "2" {
-		db.DB.Where("id = ?", in.CommentId).Delete(&pojo.Comment{})
+		db.DB.Table("comments").Where("id = ?", in.CommentId).Delete(&pojo.Comment{})
+		db.DB.Table("publishes").Where("id = ?", vid).UpdateColumn("number_comments", gorm.Expr("number_comments - ?", 1))
 		return &pb.CommentResponse{}, nil
 	} else {
 		return &pb.CommentResponse{}, errors.New("type fail")
