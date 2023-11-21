@@ -5,7 +5,7 @@
 //服务器有时候视频会比较慢
 http://101.42.28.6:8080/(服务器已过期)
 
-https://github.com/lijialin1208/lijialin
+
 二、项目分工
 | 团队成员 | 主要贡献 |
 | --- | --- |
@@ -37,6 +37,7 @@ server——具体服务类
 tool——工具包，包括token的生成、解析，视频抽帧等等
 main——初始化数据库，读取配置文件，注册服务
 // 在douyin-api的  middleware——中间件
+
 ![eb6c242e-5cdc-49a6-8b62-902d272a3d83](https://github.com/lijialin1208/lijialin/assets/87974640/2f030002-b2db-4731-b869-ab9c25b9cc89)
 
 
