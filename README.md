@@ -24,6 +24,8 @@ RPC框架：grpc
 服务之间的调用使用grpc框架（kitex框架不太熟）
 3.2 架构设计
 文件服务负责对外提供视频、图片等文件资源，数据库中存储文件的路径
+
+
 ![1280X1280](https://github.com/lijialin1208/lijialin/assets/87974640/bde7cf04-f766-4605-8b2d-b5e24acb4eef)
 
 3.3 项目代码介绍
