@@ -24,6 +24,7 @@ RPC框架：grpc
 服务之间的调用使用grpc框架（kitex框架不太熟）
 3.2 架构设计
 文件服务负责对外提供视频、图片等文件资源，数据库中存储文件的路径
+![1280X1280](https://github.com/lijialin1208/lijialin/assets/87974640/bde7cf04-f766-4605-8b2d-b5e24acb4eef)
 
 3.3 项目代码介绍
 目录介绍
@@ -36,6 +37,7 @@ server——具体服务类
 tool——工具包，包括token的生成、解析，视频抽帧等等
 main——初始化数据库，读取配置文件，注册服务
 // 在douyin-api的  middleware——中间件
+![eb6c242e-5cdc-49a6-8b62-902d272a3d83](https://github.com/lijialin1208/lijialin/assets/87974640/2f030002-b2db-4731-b869-ab9c25b9cc89)
 
 
 
@@ -44,6 +46,11 @@ main——初始化数据库，读取配置文件，注册服务
 https://www.apifox.cn/apidoc/shared-53a457fa-2d41-4109-aa74-43af3e570b51
 
 五、Demo 演示视频 （必填）
+
+
+https://github.com/lijialin1208/lijialin/assets/87974640/d0fd2a08-fc5a-4b2f-ae36-70eb71f31a4f
+
+
 六、项目总结与反思
 1. 目前仍存在的问题
   视频响应比较慢有待优化
